@@ -46,7 +46,7 @@ test("@Web Client App login", async ({ page }) => {
   }
 
   expect(page.locator(".user__name [type='text']").first()).toHaveText(
-    loginPayload.email
+    loginPayload.userEmail
   );
   await page.locator(".action__submit").click();
   await expect(page.locator(".hero-primary")).toHaveText(
