@@ -46,7 +46,7 @@ test("When no orders exists for the customer", async ({ page }) => {
   });
 
   await page.locator("button[routerlink*='myorders']").click();
-  await page.waitForResponse(urls.getOrders);
+  await page.waitForResponse(endPoints.getAllOrdersForCustomer);
 
   console.log(await page.locator(".mt-4").textContent());
 });
