@@ -1,13 +1,13 @@
 import { test, expect } from "@playwright/test";
-import { login } from "../utils/constants";
+import { loginPayload } from "../utils/constants";
 
 test("@Web Client App login", async ({ page }) => {
   const productName = "Banarsi Saree";
   const products = page.locator(".card-body");
 
   await page.goto("https://rahulshettyacademy.com/client");
-  await page.locator("#userEmail").fill(login.userEmail);
-  await page.locator("#userPassword").fill(login.userPassword);
+  await page.locator("#userEmail").fill(loginPayload.userEmail);
+  await page.locator("#userPassword").fill(loginPayload.userPassword);
   await page.locator("[value='Login']").click();
 
   await page.waitForLoadState("networkidle");
@@ -46,7 +46,7 @@ test("@Web Client App login", async ({ page }) => {
   }
 
   expect(page.locator(".user__name [type='text']").first()).toHaveText(
-    login.email
+    loginPayload.email
   );
   await page.locator(".action__submit").click();
   await expect(page.locator(".hero-primary")).toHaveText(
